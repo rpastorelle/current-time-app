@@ -1,22 +1,27 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
+  const initialTime = (new Date()).toLocaleTimeString();
+  const [currentTime, setCurrentTime] = useState(initialTime);
+
+  // Update the time every 1 second
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const now = new Date();
+      setCurrentTime(now.toLocaleTimeString());
+    }, 1000);
+
+    // Cleanup interval on component unmount
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Current time: {currentTime}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );

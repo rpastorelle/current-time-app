@@ -1,0 +1,15 @@
+.ac-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-width: 500px;
+}
+.ac-wrapper input {
+  flex: 1;
+}
+.ac-suggestions {
+  background: white;
+  color: black;
+  max-width: 100%;
+  padding: 4px;
+}
